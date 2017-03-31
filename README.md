@@ -26,6 +26,15 @@ a [video](https://youtu.be/ch_ILDBEaok) and find more features!
        bitsadmin /transfer "GetBatch" "https://git.io/vDDjn" "%cd%\python\kivy.bat"
        cd python
 
+   For GNU/Linux with Wine (2.4+) do:
+
+       cd ~/.wine/drive_c/users/$USERNAME
+       mkdir python && cd python
+       wget -O kiwget.exe https://git.io/vSWf2
+       chmod +x kiwget.exe
+       ./kiwget.exe kivy
+       wine cmd
+
 2. Run `kivy.bat`, select your Python and Kivy versions, wait.
 
 3. Enjoy!
