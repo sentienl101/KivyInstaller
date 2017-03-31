@@ -1,0 +1,32 @@
+language: python
+matrix:
+  fast_finish: true
+  include:
+    - env: RUN=run
+      os: linux
+
+before_install:
+  - if [ "${RUN}" == "run" ]; then
+        sudo dpkg --add-architecture i386
+        wget https://dl.winehq.org/wine-builds/Release.key
+        sudo apt-key add Release.key
+        sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+        sudo apt-get update;
+        sudo apt-get -y install wine-devel
+        export DISPLAY=:99.0;
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1280x720x24 -ac +extension GLX;
+    fi;
+
+install:
+  - if [ "${RUN}" == "run" ]; then 
+        cd ~/.wine/drive_c/users/$USERNAME
+        mkdir python && cd python
+        wget -O kiwget.exe https://git.io/vSWf2
+        chmod +x kiwget.exe
+        ./kiwget.exe get
+    fi;
+
+script:
+  - if [ "${RUN}" == "run" ]; then
+        wine cmd /c kivy.bat
+    fi;
