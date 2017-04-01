@@ -8,7 +8,7 @@ matrix:
 before_install:
   - if [ "${RUN}" == "run" ]; then
         sudo dpkg --add-architecture i386;
-        sudo add-apt-repository ppa:wine/wine-builds;
+        sudo add-apt-repository --yes ppa:wine/wine-builds;
         sudo apt-get update;
         sudo apt-get install winehq-devel;
     fi;
