@@ -8,11 +8,9 @@ matrix:
 before_install:
   - if [ "${RUN}" == "run" ]; then
         sudo dpkg --add-architecture i386;
-        wget https://dl.winehq.org/wine-builds/Release.key;
-        sudo apt-key add Release.key;
-        sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 818A435C5FCBF54A
-        sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/;
+        sudo add-apt-repository ppa:wine/wine-builds;
         sudo apt-get update;
+        sudo apt-get install winehq-devel;
     fi;
 
 install:
