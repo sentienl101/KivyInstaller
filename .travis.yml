@@ -14,7 +14,7 @@ before_install:
     fi;
 
 install:
-  - if [ "${RUN}" == "run" ]; then 
+  - if [ "${RUN}" == "run" ]; then
         sudo apt-get -y install --install-recommends winehq-devel;
         export DISPLAY=:99.0;
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1280x720x24 -ac +extension GLX;
