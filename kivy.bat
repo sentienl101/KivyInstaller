@@ -18,8 +18,11 @@ set admin=1
 set cpwhl=0
 set stable=1
 set arch=win32
+set designer=0
+set shortcuts=0
 set pyversion=0
 set gstreamer=0
+set amdext=.amd64
 set installkivy=1
 set installerversion=3.6
 set kilog=[KivyInstaller]
@@ -117,7 +120,7 @@ if %choice_python%==2 (
 ) else (
     goto version
 )
-set amdext=.amd64
+
 if %pyext%==.exe (
     set amdext=-amd64
 )
@@ -152,6 +155,7 @@ set /p choice_gst="Install GStreamer? y/n"
 if %choice_gst%==y (
     set gstreamer=1
 )
+
 set /p choice_dsgn="Install Kivy Designer? y/n"
 if %choice_dsgn%==y (
     set designer=1
