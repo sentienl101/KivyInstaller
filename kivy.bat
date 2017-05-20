@@ -1,11 +1,15 @@
 ::Author: KeyWeeUsr @ https://github.com/KeyWeeUsr
 ::Version: 3.6
+::------------------------------------------------
 ::Inspired by kivy.bat file for kivy1.8.0
 ::To reset file just delete "config.kivyinstaller"
 ::Bitsadmin is available since winXP SP2
 ::If it is not available, download and install to C:\Windows
 ::https://www.microsoft.com/en-us/download/details.aspx?id=18546
+
 @if not defined DEBUG (echo off)
+
+:: KivyInstaller config setup
 if not defined cp2 (set cp2=cp27)
 if not defined cp3 (set cp3=cp35)
 if not defined py2 (set py2=2.7.13)
@@ -26,10 +30,16 @@ set amdext=.amd64
 set installkivy=1
 set installerversion=3.6
 set kilog=[KivyInstaller]
+
+:: KivyInstaller batch setup
 setlocal ENABLEDELAYEDEXPANSION
 title = KivyInstaller %installerversion%
+
+:: Shortcut folder paths
 set sendto=%appdata%\Microsoft\Windows\SendTo
 set taskbar=%appdata%\Microsoft\Internet Explorer\Quick Launch
+
+:: Python .MSI and .EXE setup options
 set addlocal=ADDLOCAL^=DefaultFeature,PrivateCRT,TclTk,Documentation,Tools,Testsuite
 set py35addlocal=Shortcuts=0 Include_launcher=0 Include_pip=0
 set pyFTP=https://www.python.org/ftp/python/
@@ -40,13 +50,14 @@ if [%1]==[version] (
     exit
 )
 
-:: Set downloader
+:: Choose file downloader
 if [%SHELL%]==[/bin/bash] (
     set down=kiwget.exe
 ) else (
     set down=bitsadmin.exe
 )
 
+:: Check for WinXP (different SendTo)
 ver | find "5.1" >nul && set xp=1
 if %xp%==1 (
     set sendto=%userprofile%\SendTo
