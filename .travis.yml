@@ -28,6 +28,8 @@ script:
         wget -O kiwget.exe https://git.io/vSWf2;
         chmod +x kiwget.exe;
         ./kiwget.exe kivy;
+        wineboot -s -f
+        wineboot -i
         wineboot --update;
         wine cmd /c exit 1;
     fi;
