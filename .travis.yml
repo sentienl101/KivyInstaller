@@ -28,7 +28,7 @@ script:
         wget -O kiwget.exe https://git.io/vSWf2;
         chmod +x kiwget.exe;
         echo "kiwget kivy";
-        ./kiwget.exe kivy;
+        wine ./kiwget.exe kivy;
         echo "kiwget kivy end";
         wine cmd /c exit 12345;
     fi;
