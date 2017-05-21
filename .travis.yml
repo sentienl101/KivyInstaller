@@ -22,14 +22,14 @@ install:
 
 script:
   - if [ "${RUN}" == "run" ]; then
-        wine --version
+        wine --version;
         cd ~/.wine/drive_c/users/$USERNAME;
         mkdir python && cd python;
         wget -O kiwget.exe https://git.io/vSWf2;
         chmod +x kiwget.exe;
         ./kiwget.exe kivy;
-        wineboot -s -f
-        wineboot -i
+        wineboot -s -f;
+        wineboot -i;
         wineboot --update;
         wine cmd /c exit 1;
     fi;
