@@ -27,9 +27,10 @@ script:
         mkdir python && cd python;
         wget -O kiwget.exe https://git.io/vSWf2;
         chmod +x kiwget.exe;
+        ls;
+        winecfg;
+        echo "kiwget kivy";
         ./kiwget.exe kivy;
-        wineboot -s -f;
-        wineboot -i;
-        wineboot --update;
-        wine cmd /c exit 1;
+        echo "kiwget kivy end";
+        wine cmd /c exit 12345;
     fi;
