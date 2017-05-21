@@ -27,8 +27,6 @@ script:
         mkdir python && cd python;
         wget -O kiwget.exe https://git.io/vSWf2;
         chmod +x kiwget.exe;
-        echo "kiwget kivy";
-        wine ./kiwget.exe kivy;
-        echo "kiwget kivy end";
-        wine cmd /c exit 12345;
+        bash ./kiwget.exe kivy;
+        wine cmd /c kivy.bat;  # kiwget cant be accessed, msi wont load
     fi;
